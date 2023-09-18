@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpg741wmm024s"]
+
+[ext_resource type="Script" path="res://Scripts/StartMenu.gd" id="1_wl314"]
+[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="3_xs15v"]
+[ext_resource type="FontFile" uid="uid://cgy0lglqd2kvu" path="res://Assets/Fonts/Early GameBoy.ttf" id="4_bpp63"]
+[ext_resource type="PackedScene" uid="uid://bpcdteyw7jupw" path="res://Levels/MenuLevel.tscn" id="5_0aeng"]
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_wl314")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(3, 3)
+
+[node name="UIManager" type="Node2D" parent="."]
+script = ExtResource("3_xs15v")
+
+[node name="Title" type="Label" parent="UIManager"]
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(0.878431, 0.972549, 0.815686, 1)
+theme_override_fonts/font = ExtResource("4_bpp63")
+theme_override_font_sizes/font_size = 14
+text = "Slimey Scapade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Label" parent="UIManager"]
+offset_left = 96.0
+offset_top = 128.0
+offset_right = 160.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.878431, 0.972549, 0.815686, 1)
+theme_override_fonts/font = ExtResource("4_bpp63")
+theme_override_font_sizes/font_size = 11
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Label" parent="UIManager"]
+offset_left = 96.0
+offset_top = 160.0
+offset_right = 160.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0.878431, 0.972549, 0.815686, 1)
+theme_override_fonts/font = ExtResource("4_bpp63")
+theme_override_font_sizes/font_size = 11
+text = "Quit
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Label" parent="UIManager"]
+offset_left = 96.0
+offset_top = 224.0
+offset_right = 336.0
+offset_bottom = 288.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0.878431, 0.972549, 0.815686, 1)
+theme_override_fonts/font = ExtResource("4_bpp63")
+theme_override_font_sizes/font_size = 15
+text = "©made by sa4dus
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" parent="." instance=ExtResource("5_0aeng")]

@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://7q0f4r174v66"]
+
+[ext_resource type="Script" path="res://Scripts/StartMenu.gd" id="1_4l4cp"]
+[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="1_afwi5"]
+[ext_resource type="FontFile" uid="uid://cgy0lglqd2kvu" path="res://Assets/Fonts/Early GameBoy.ttf" id="2_eo3j5"]
+[ext_resource type="PackedScene" uid="uid://bpcdteyw7jupw" path="res://Levels/MenuLevel.tscn" id="3_yyu40"]
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_4l4cp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(3, 3)
+
+[node name="UIManager" type="Node2D" parent="."]
+script = ExtResource("1_afwi5")
+
+[node name="Title" type="Label" parent="UIManager"]
+offset_top = 48.0
+offset_right = 240.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0.878431, 0.972549, 0.815686, 1)
+theme_override_fonts/font = ExtResource("2_eo3j5")
+theme_override_font_sizes/font_size = 12
+text = "THanks for playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Play" type="Label" parent="UIManager"]
+offset_left = 96.0
+offset_top = 128.0
+offset_right = 224.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.878431, 0.972549, 0.815686, 1)
+theme_override_fonts/font = ExtResource("2_eo3j5")
+theme_override_font_sizes/font_size = 11
+text = "Play Again"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="Label" parent="UIManager"]
+offset_left = 96.0
+offset_top = 160.0
+offset_right = 160.0
+offset_bottom = 177.0
+theme_override_colors/font_color = Color(0.878431, 0.972549, 0.815686, 1)
+theme_override_fonts/font = ExtResource("2_eo3j5")
+theme_override_font_sizes/font_size = 11
+text = "Quit
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Level" parent="." instance=ExtResource("3_yyu40")]

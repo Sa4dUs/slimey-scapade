@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://cuklk1grawvib"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_74n0g"]
+[ext_resource type="Texture2D" uid="uid://d3wp4mwd3yrqi" path="res://Assets/Sprites/player_front.png" id="2_p30yl"]
+[ext_resource type="AudioStream" uid="uid://sc7wyoxp220a" path="res://Assets/SFX/Hit damage 1.wav" id="3_x4vxy"]
+[ext_resource type="AudioStream" uid="uid://cwjv5kplbm1ge" path="res://Assets/SFX/Boss hit 1.wav" id="4_rk7gp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2gbc"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_74n0g")
+
+[node name="Player" type="Sprite2D" parent="."]
+texture = ExtResource("2_p30yl")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+scale = Vector2(0.8, 0.8)
+shape = SubResource("RectangleShape2D_c2gbc")
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="MoveSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_x4vxy")
+
+[node name="CollideSound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("4_rk7gp")
+volume_db = -7.5

@@ -1,0 +1,69 @@
+[gd_scene load_steps=13 format=3 uid="uid://dwvm72apu4aa"]
+
+[ext_resource type="Texture2D" uid="uid://cw3nggfrnwi48" path="res://Assets/Sprites/floor_tile.png" id="2_2wnuu"]
+[ext_resource type="Texture2D" uid="uid://bchiaehcreo47" path="res://Assets/Sprites/wall_tile.png" id="2_aclc6"]
+[ext_resource type="Texture2D" uid="uid://b7w4j7lj1dla7" path="res://Assets/Sprites/slimed_floor.png" id="3_ygsop"]
+[ext_resource type="PackedScene" uid="uid://cuklk1grawvib" path="res://Prefabs/Player.tscn" id="5_cn4t0"]
+[ext_resource type="PackedScene" uid="uid://d2vul7hubpba1" path="res://Prefabs/Box.tscn" id="6_8a6eb"]
+[ext_resource type="Script" path="res://Scripts/Box.gd" id="7_mufna"]
+[ext_resource type="PackedScene" uid="uid://26up4tj4ymty" path="res://Prefabs/Spot.tscn" id="8_ktse4"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_st6xm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yyxmy"]
+resource_name = "Wall"
+texture = ExtResource("2_aclc6")
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nu4x5"]
+resource_name = "Floor"
+texture = ExtResource("2_2wnuu")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7q53m"]
+resource_name = "Slimed"
+texture = ExtResource("3_ygsop")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_srh1d"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_st6xm")
+sources/1 = SubResource("TileSetAtlasSource_yyxmy")
+sources/2 = SubResource("TileSetAtlasSource_nu4x5")
+sources/3 = SubResource("TileSetAtlasSource_7q53m")
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_srh1d")
+collision_visibility_mode = 2
+format = 2
+layer_0/name = "Wall"
+layer_0/tile_data = PackedInt32Array(655363, 1, 0, 655364, 1, 0, 655365, 1, 0, 655366, 1, 0, 655367, 1, 0, 655368, 1, 0, 655369, 1, 0, 589826, 1, 0, 524290, 1, 0, 458754, 1, 0, 393218, 1, 0, 327684, 1, 0, 327685, 1, 0, 589835, 1, 0, 524299, 1, 0, 458763, 1, 0, 393227, 1, 0, 589831, 2, 0, 524295, 2, 0, 458759, 2, 0, 393223, 2, 0, 393222, 2, 0, 393221, 2, 0, 393220, 2, 0, 393219, 2, 0, 458755, 2, 0, 524291, 2, 0, 589827, 2, 0, 589828, 2, 0, 524292, 2, 0, 458756, 2, 0, 458757, 2, 0, 524293, 2, 0, 589829, 2, 0, 589830, 2, 0, 524294, 2, 0, 458758, 2, 0, 393224, 2, 0, 458760, 2, 0, 524296, 2, 0, 589832, 2, 0, 589833, 2, 0, 524297, 2, 0, 458761, 2, 0, 393225, 2, 0, 393226, 2, 0, 458762, 2, 0, 524298, 2, 0, 589834, 2, 0, 655370, 1, 0, 327683, 1, 0, 327686, 1, 0, 327687, 1, 0, 327688, 1, 0, 327689, 1, 0, 327690, 1, 0)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("5_cn4t0")]
+z_index = 5
+position = Vector2(64, 128)
+platform_floor_layers = 0
+platform_wall_layers = 1
+
+[node name="Boxes" type="Node2D" parent="."]
+
+[node name="Box" parent="Boxes" instance=ExtResource("6_8a6eb")]
+z_index = 5
+position = Vector2(112, 96)
+script = ExtResource("7_mufna")
+
+[node name="Spots" type="Node2D" parent="."]
+
+[node name="Spot" parent="Spots" instance=ExtResource("8_ktse4")]
+position = Vector2(160, 96)

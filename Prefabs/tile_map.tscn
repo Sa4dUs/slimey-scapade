@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://rcfxujkyil34"]
+
+[ext_resource type="Texture2D" uid="uid://bchiaehcreo47" path="res://Assets/Sprites/wall_tile.png" id="1_3yvyf"]
+[ext_resource type="Texture2D" uid="uid://cw3nggfrnwi48" path="res://Assets/Sprites/floor_tile.png" id="2_2x7ra"]
+[ext_resource type="Texture2D" uid="uid://qp6bpbjlu0f5" path="res://Assets/Sprites/slimed_floor_tile.png" id="3_p5fvo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qbtqr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ofjr"]
+texture = ExtResource("1_3yvyf")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rar7w"]
+texture = ExtResource("2_2x7ra")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oqmim"]
+texture = ExtResource("3_p5fvo")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_2yopg"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_qbtqr")
+sources/3 = SubResource("TileSetAtlasSource_oqmim")
+sources/2 = SubResource("TileSetAtlasSource_rar7w")
+sources/1 = SubResource("TileSetAtlasSource_3ofjr")
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_2yopg")
+collision_visibility_mode = 2
+format = 2
+layer_0/name = "Wall"
+metadata/_edit_lock_ = true

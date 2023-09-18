@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtmoclap35e2u"]
+
+[ext_resource type="Script" path="res://Scripts/SceneManager.gd" id="1_va3pe"]
+[ext_resource type="PackedScene" uid="uid://dccpsaeun6ao6" path="res://Levels/Level1.tscn" id="2_drmt5"]
+
+[node name="main_tscn" type="Node2D"]
+
+[node name="SceneManager" type="Node2D" parent="."]
+script = ExtResource("1_va3pe")
+
+[node name="Level1" parent="SceneManager" instance=ExtResource("2_drmt5")]
+
+[connection signal="level_cleared" from="SceneManager" to="SceneManager" method="_on_level_cleared"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://26up4tj4ymty"]
+
+[ext_resource type="Script" path="res://Scripts/Spot.gd" id="1_2p43v"]
+[ext_resource type="Texture2D" uid="uid://d2tfdv3vx4r8j" path="res://Assets/Sprites/goal.png" id="2_xkm26"]
+[ext_resource type="AudioStream" uid="uid://pswyc8hoqhip" path="res://Assets/SFX/Fruit collect 1.wav" id="3_2jcs8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c460r"]
+
+[node name="Spot" type="Area2D"]
+position = Vector2(224, 112)
+script = ExtResource("1_2p43v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xkm26")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+scale = Vector2(0.7, 0.7)
+shape = SubResource("RectangleShape2D_c460r")
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="OccupySound" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("3_2jcs8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

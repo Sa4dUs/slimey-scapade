@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8bufbnpkbuie"]
+
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_s40rv"]
+[ext_resource type="FontFile" uid="uid://cgy0lglqd2kvu" path="res://Assets/Fonts/Early GameBoy.ttf" id="2_f1a7w"]
+[ext_resource type="Script" path="res://Scripts/SceneManager.gd" id="2_ulgbi"]
+[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="3_v8xvu"]
+
+[node name="GameManager" type="Node2D"]
+script = ExtResource("1_s40rv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(3, 3)
+
+[node name="SceneManager" type="Node2D" parent="."]
+script = ExtResource("2_ulgbi")
+
+[node name="UIManager" type="Node2D" parent="."]
+script = ExtResource("3_v8xvu")
+
+[node name="LevelLabel" type="Label" parent="UIManager"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 70.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0.878431, 0.972549, 0.815686, 1)
+theme_override_fonts/font = ExtResource("2_f1a7w")
+theme_override_font_sizes/font_size = 8
+text = "Level 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MovesLabel" type="Label" parent="UIManager"]
+offset_left = 16.0
+offset_top = 29.0
+offset_right = 76.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0.878431, 0.972549, 0.815686, 1)
+theme_override_fonts/font = ExtResource("2_f1a7w")
+theme_override_font_sizes/font_size = 8
+text = "Moves: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
