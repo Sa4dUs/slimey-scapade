@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bpcdteyw7jupw"]
+[gd_scene load_steps=5 format=3 uid="uid://bpcdteyw7jupw"]
 
 [ext_resource type="PackedScene" uid="uid://cuklk1grawvib" path="res://Prefabs/Player.tscn" id="1_uk0i5"]
 [ext_resource type="PackedScene" uid="uid://rcfxujkyil34" path="res://Prefabs/tile_map.tscn" id="1_wpd4h"]
-[ext_resource type="PackedScene" uid="uid://d2vul7hubpba1" path="res://Prefabs/Box.tscn" id="2_61mcr"]
-[ext_resource type="Script" path="res://Scripts/Box.gd" id="3_oukuh"]
+[ext_resource type="PackedScene" uid="uid://dcdc2cy6frlao" path="res://Prefabs/Coin.tscn" id="3_su5y4"]
 [ext_resource type="PackedScene" uid="uid://26up4tj4ymty" path="res://Prefabs/Spot.tscn" id="4_tjpbo"]
 
 [node name="Level" type="Node2D"]
@@ -18,17 +17,13 @@ position = Vector2(48, 112)
 platform_floor_layers = 0
 platform_wall_layers = 1
 
-[node name="Boxes" type="Node2D" parent="."]
+[node name="Coins" type="Node2D" parent="."]
 
-[node name="Box" parent="Boxes" instance=ExtResource("2_61mcr")]
-z_index = 5
+[node name="Coin" parent="Coins" instance=ExtResource("3_su5y4")]
 position = Vector2(64, 128)
-script = ExtResource("3_oukuh")
 
-[node name="Box2" parent="Boxes" instance=ExtResource("2_61mcr")]
-z_index = 5
+[node name="Coin2" parent="Coins" instance=ExtResource("3_su5y4")]
 position = Vector2(64, 160)
-script = ExtResource("3_oukuh")
 
 [node name="Spots" type="Node2D" parent="."]
 

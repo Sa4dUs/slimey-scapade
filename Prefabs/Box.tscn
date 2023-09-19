@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2vul7hubpba1"]
+[gd_scene load_steps=4 format=3 uid="uid://d2vul7hubpba1"]
 
-[ext_resource type="Texture2D" uid="uid://clvpl3d4m6hhg" path="res://Assets/Sprites/box.png" id="1_lwclw"]
+[ext_resource type="Texture2D" uid="uid://cfn055mkft85f" path="res://Assets/Sprites/box.png" id="1_lwclw"]
+[ext_resource type="Script" path="res://Scripts/PushableObject.gd" id="1_r4037"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c460r"]
 
 [node name="Box" type="CharacterBody2D" groups=["Box"]]
 position = Vector2(32, 48)
+script = ExtResource("1_r4037")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lwclw")

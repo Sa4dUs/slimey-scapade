@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfn055mkft85f"
-path="res://.godot/imported/box.png-22d19300e7f5d0fbcf46b592734dcb2f.ctex"
+uid="uid://clvpl3d4m6hhg"
+path="res://.godot/imported/coin.png-69cfccbe0dae60c8dcaf1a48ccf22974.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/box.png"
-dest_files=["res://.godot/imported/box.png-22d19300e7f5d0fbcf46b592734dcb2f.ctex"]
+source_file="res://Assets/Sprites/coin.png"
+dest_files=["res://.godot/imported/coin.png-69cfccbe0dae60c8dcaf1a48ccf22974.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

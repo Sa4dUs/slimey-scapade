@@ -69,13 +69,13 @@ func move(dir):
 		return await execute_move(dir)
 	else:
 		var collider = result.collider
-		if collider.is_in_group("Box"):
+		if collider.is_in_group("Coin") or collider.is_in_group("Box"):
 			if collider.move(dir):
 				# shitty bug solving
 				await get_tree().create_timer(0.01).timeout
-				return await execute_move(dir, true)	
+				return await execute_move(dir)	
 
-func execute_move(dir, box = false):
+func execute_move(dir):
 	slime_tile(global_position)
 	
 	tween = create_tween()

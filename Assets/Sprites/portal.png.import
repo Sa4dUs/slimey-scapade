@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfn055mkft85f"
-path="res://.godot/imported/box.png-22d19300e7f5d0fbcf46b592734dcb2f.ctex"
+uid="uid://cc2df6fdetptb"
+path="res://.godot/imported/portal.png-90664bc9fe17788cb41bd2481cacce24.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/box.png"
-dest_files=["res://.godot/imported/box.png-22d19300e7f5d0fbcf46b592734dcb2f.ctex"]
+source_file="res://Assets/Sprites/portal.png"
+dest_files=["res://.godot/imported/portal.png-90664bc9fe17788cb41bd2481cacce24.ctex"]
 
 [params]
 
