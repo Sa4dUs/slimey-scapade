@@ -72,7 +72,7 @@ func move(dir):
 		if collider.is_in_group("Coin") or collider.is_in_group("Box"):
 			if collider.move(dir):
 				# shitty bug solving
-				await get_tree().create_timer(0.01).timeout
+				await get_tree().create_timer(0.1).timeout
 				return await execute_move(dir)	
 
 func execute_move(dir):
