@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://7q0f4r174v66"]
+[gd_scene load_steps=6 format=3 uid="uid://7q0f4r174v66"]
 
 [ext_resource type="Script" path="res://Scripts/StartMenu.gd" id="1_4l4cp"]
 [ext_resource type="Script" path="res://Scripts/UIManager.gd" id="1_afwi5"]
 [ext_resource type="FontFile" uid="uid://cgy0lglqd2kvu" path="res://Assets/Fonts/Early GameBoy.ttf" id="2_eo3j5"]
 [ext_resource type="PackedScene" uid="uid://bpcdteyw7jupw" path="res://Levels/MenuLevel.tscn" id="3_yyu40"]
+[ext_resource type="AudioStream" uid="uid://x5jkkrqyse6" path="res://Assets/SFX/Mission Over.wav" id="5_d3xdj"]
 
 [node name="GameOver" type="Node2D"]
 script = ExtResource("1_4l4cp")
@@ -52,3 +53,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Level" parent="." instance=ExtResource("3_yyu40")]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_d3xdj")
+autoplay = true

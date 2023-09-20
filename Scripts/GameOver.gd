@@ -1,6 +1,6 @@
 extends Node2D
 
-var moves = 0
+var moves = [0, 0, 0, 0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,3 +17,4 @@ func _process(_delta):
 		
 	if quitSpot.occupied:
 		get_tree().quit()
+

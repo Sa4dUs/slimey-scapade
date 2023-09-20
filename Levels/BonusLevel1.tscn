@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://cgr2n30q5jbjm"]
+
+[ext_resource type="Texture2D" uid="uid://bchiaehcreo47" path="res://Assets/Sprites/wall_tile.png" id="1_gvtoj"]
+[ext_resource type="Texture2D" uid="uid://cw3nggfrnwi48" path="res://Assets/Sprites/floor_tile.png" id="2_i5ntc"]
+[ext_resource type="Texture2D" uid="uid://b7w4j7lj1dla7" path="res://Assets/Sprites/slimed_floor.png" id="3_u1dv0"]
+[ext_resource type="PackedScene" uid="uid://cuklk1grawvib" path="res://Prefabs/Player.tscn" id="4_h5urk"]
+[ext_resource type="PackedScene" uid="uid://dcdc2cy6frlao" path="res://Prefabs/Coin.tscn" id="5_6f6ne"]
+[ext_resource type="PackedScene" uid="uid://26up4tj4ymty" path="res://Prefabs/Spot.tscn" id="6_acekb"]
+[ext_resource type="PackedScene" uid="uid://d2vul7hubpba1" path="res://Prefabs/Box.tscn" id="7_5sovo"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vqkh6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_53ldf"]
+resource_name = "Wall"
+texture = ExtResource("1_gvtoj")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cv68v"]
+resource_name = "Floor"
+texture = ExtResource("2_i5ntc")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlt28"]
+resource_name = "Slimed"
+texture = ExtResource("3_u1dv0")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_2yopg"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_vqkh6")
+sources/2 = SubResource("TileSetAtlasSource_cv68v")
+sources/1 = SubResource("TileSetAtlasSource_53ldf")
+sources/3 = SubResource("TileSetAtlasSource_tlt28")
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_2yopg")
+collision_visibility_mode = 2
+format = 2
+layer_0/name = "Wall"
+layer_0/tile_data = PackedInt32Array(327682, 2, 0, 393218, 2, 0, 458754, 2, 0, 524290, 2, 0, 589826, 2, 0, 655362, 2, 0, 720898, 2, 0, 786434, 2, 0, 851970, 1, 0, 262147, 2, 0, 327683, 2, 0, 393219, 2, 0, 458755, 2, 0, 524291, 2, 0, 589827, 2, 0, 655363, 2, 0, 720899, 2, 0, 786435, 2, 0, 851971, 1, 0, 262148, 2, 0, 327684, 2, 0, 393220, 2, 0, 458756, 2, 0, 524292, 2, 0, 589828, 2, 0, 655364, 2, 0, 720900, 2, 0, 786436, 2, 0, 851972, 1, 0, 262149, 3, 0, 327685, 2, 0, 393221, 2, 0, 458757, 2, 0, 524293, 1, 0, 589829, 1, 0, 655365, 1, 0, 720901, 1, 0, 786437, 1, 0, 262150, 2, 0, 327686, 2, 0, 393222, 2, 0, 458758, 1, 0, 262151, 2, 0, 327687, 2, 0, 393223, 2, 0, 458759, 1, 0, 262152, 2, 0, 327688, 2, 0, 393224, 2, 0, 458760, 1, 0, 720904, 2, 0, 786440, 2, 0, 851976, 1, 0, 262153, 1, 0, 327689, 1, 0, 393225, 1, 0, 655369, 2, 0, 720905, 2, 0, 786441, 2, 0, 851977, 1, 0, 655370, 2, 0, 720906, 2, 0, 786442, 2, 0, 851978, 1, 0, 655371, 2, 0, 720907, 2, 0, 786443, 2, 0, 851979, 1, 0, 655372, 2, 0, 720908, 2, 0, 786444, 2, 0, 851980, 1, 0, 655373, 1, 0, 720909, 1, 0, 786445, 1, 0, 262145, 1, 0, 327681, 1, 0, 393217, 1, 0, 458753, 1, 0, 524289, 1, 0, 589825, 1, 0, 655361, 1, 0, 720897, 1, 0, 786433, 1, 0, 196610, 1, 0, 262146, 2, 0, 196611, 1, 0, 196612, 1, 0, 196613, 1, 0, 196614, 1, 0, 196615, 1, 0, 655367, 1, 0, 720903, 1, 0, 786439, 1, 0, 196616, 1, 0, 589832, 1, 0, 655368, 2, 0, 589833, 1, 0, 589834, 1, 0, 589835, 1, 0, 589836, 1, 0)
+metadata/_edit_lock_ = true
+
+[node name="Players" type="Node2D" parent="."]
+
+[node name="Player" parent="Players" instance=ExtResource("4_h5urk")]
+z_index = 5
+position = Vector2(48, 144)
+platform_floor_layers = 0
+platform_wall_layers = 1
+
+[node name="Player2" parent="Players" instance=ExtResource("4_h5urk")]
+z_index = 5
+position = Vector2(144, 176)
+platform_floor_layers = 0
+platform_wall_layers = 1
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("5_6f6ne")]
+position = Vector2(64, 112)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("5_6f6ne")]
+position = Vector2(160, 176)
+
+[node name="Spots" type="Node2D" parent="."]
+
+[node name="Spot" parent="Spots" instance=ExtResource("6_acekb")]
+position = Vector2(80, 64)
+
+[node name="Spot2" parent="Spots" instance=ExtResource("6_acekb")]
+position = Vector2(128, 176)
+
+[node name="Boxes" type="Node2D" parent="."]
+position = Vector2(160, 192)
+
+[node name="Box" parent="Boxes" instance=ExtResource("7_5sovo")]
+position = Vector2(-112, -112)
+
+[node name="Box2" parent="Boxes" instance=ExtResource("7_5sovo")]
+position = Vector2(-80, -96)
+
+[node name="Box3" parent="Boxes" instance=ExtResource("7_5sovo")]
+position = Vector2(16, -16)

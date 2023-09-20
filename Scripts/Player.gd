@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
-var tween: Tween
+var last_move_success = false
+
+var can_move = true 
+
+var first_position_change = true
 
 var grid_size = 16
 
@@ -11,6 +15,7 @@ var inputs = {
 	"ui_right": Vector2.RIGHT
 }
 
+
 var sprites = {
 	"ui_up": "res://Assets/Sprites/player_back.png",
 	"ui_down": "res://Assets/Sprites/player_front.png",
@@ -20,19 +25,21 @@ var sprites = {
 
 func _unhandled_input(event):
 	for dir in inputs.keys():
-		if event.is_action_pressed(dir):
+		if event.is_action_pressed(dir) and can_move:
+			can_move = false
 			$Player.texture = load(sprites[dir])
 			
 			if await move(dir):
 				$"SFX/MoveSound".play()				
-				
-				var game = get_parent().get_parent()
-				game.moves += 1
 			else:
 				$"SFX/CollideSound".play()
-				
+			
+			last_move_success = false
+			first_position_change = true
+			can_move = true	
+			
 func get_tile_id(pos):
-	var tilemap = $"../TileMap"
+	var tilemap = $"../../TileMap"
 	
 	if !tilemap:
 		return
@@ -44,7 +51,7 @@ func get_tile_id(pos):
 	
 func slime_tile(pos):
 	
-	var tilemap = $"../TileMap"
+	var tilemap = $"../../TileMap"
 	
 	if !tilemap:
 		return
@@ -72,19 +79,35 @@ func move(dir):
 		if collider.is_in_group("Coin") or collider.is_in_group("Box"):
 			if collider.move(dir):
 				# shitty bug solving
-				await get_tree().create_timer(0.1).timeout
+				await get_tree().create_timer(0.01).timeout
 				return await execute_move(dir)	
 
 func execute_move(dir):
 	slime_tile(global_position)
 	
-	tween = create_tween()
-	
 	var vector_pos = inputs[dir] * grid_size
 	
-	position += vector_pos		
+	position += vector_pos	
+	
+	if first_position_change:
+		var game = get_parent().get_parent().get_parent()
+		
+		if game.name == "GameManager":
+			game.moves[get_child_index()] += 1
+		
+		first_position_change = false
+		
+	
+	last_move_success = true	
 	
 	if get_tile_id(global_position) == 3:
 		return await move(dir)
 		
 	return true
+
+func get_child_index():
+	var parent_node = get_parent()
+	for i in range(parent_node.get_child_count()):
+		if parent_node.get_child(i) == self:
+			return i
+			

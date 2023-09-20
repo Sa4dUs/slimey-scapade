@@ -7,12 +7,15 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 
 func set_level(level):
 	$LevelLabel.text = "Level " + str(level)	
+
+func set_bonus_level(level):
+	$LevelLabel.text = "Bonus Level " + str(level)	
 
 func set_moves(moves):
 	$MovesLabel.text = "Moves: " + str(moves)

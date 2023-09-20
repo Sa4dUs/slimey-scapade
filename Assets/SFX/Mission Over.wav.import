@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://x5jkkrqyse6"
+path="res://.godot/imported/Mission Over.wav-3bd0b2a056dcf3a876931f57dd1c02ce.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Mission Over.wav"
+dest_files=["res://.godot/imported/Mission Over.wav-3bd0b2a056dcf3a876931f57dd1c02ce.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
