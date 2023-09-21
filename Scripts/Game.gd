@@ -1,8 +1,8 @@
 extends Node2D
 
 var game_end = false
-var moves = [0, 0, 0, 0]
-var last_moves = [0, 0, 0, 0]
+var moves = 0
+var has_moved = [false, false, false, false]
 
 var number_of_levels = 5 
 
@@ -13,7 +13,7 @@ func _ready():
 	$SceneManager.load_level_by_id(current_level)
 	
 func _process(_delta):
-	$UIManager.set_moves(sum(moves))
+	$UIManager.set_moves(moves)
 	
 	if !$"Level/Spots":
 		return 
@@ -28,17 +28,17 @@ func _process(_delta):
 		if current_level <= number_of_levels:
 			$SceneManager.load_level_by_id(current_level)
 			$UIManager.set_level(current_level)
-			moves.fill(0)
+			moves = 0
 			
 		else:
 			$SceneManager.load_bonus_level_by_id(current_bonus_level)
 			$UIManager.set_bonus_level(current_bonus_level)
 			
 			current_bonus_level += 1
-			moves.fill(0)
+			moves = 0
 			
 func restart_level():
-	moves.fill(0)
+	moves = 0
 	
 	if current_level <= number_of_levels:
 		$SceneManager.load_level_by_id(current_level)
@@ -53,17 +53,6 @@ func _unhandled_input(event):
 func _input(event):
 	if Input.is_key_pressed(KEY_ESCAPE):
 		get_tree().change_scene_to_file("res://Scenes/StartMenu.tscn")
-
-func sum(array):
-	var sum_value = 0
-	
-	for i in array:
-		sum_value += i
-		
-	return sum_value
-	
-func update_last_moves(moves):
-	last_moves = moves.duplicate()
 	
 func multiple_changes(a, b):
 	for i in range(a.size()):
@@ -71,9 +60,9 @@ func multiple_changes(a, b):
 			return true
 	return false
 	
-func fix_moves():
-	print("last_moves ", last_moves)
-	print("moves ", moves)
-	if sum(moves) != 0 and abs(sum(moves) - sum(last_moves)) > 1:
-		print("Have to fix")
-
+func logical_moves():
+	for i in range(has_moved.size()):
+		if has_moved[i]:
+			moves += 1
+			has_moved.fill(false)
+			return

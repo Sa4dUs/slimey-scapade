@@ -38,6 +38,13 @@ func _unhandled_input(event):
 			first_position_change = true
 			can_move = true	
 			
+			var game = get_parent().get_parent().get_parent()
+		
+			if game.name == "GameManager":
+				if self.name == "Player":
+					game.logical_moves()
+			
+			
 func get_tile_id(pos):
 	var tilemap = $"../../TileMap"
 	
@@ -94,17 +101,8 @@ func execute_move(dir):
 		
 		
 		if game.name == "GameManager":
-			if self.name == "Player":		
-				game.update_last_moves(game.moves)
-			else:
-				await get_tree().create_timer(0.01).timeout
-			
-			game.moves[get_child_index()] += 1
-			
-			if self.name == "Player":
-				game.fix_moves()
+			game.has_moved[get_child_index()] = true
 				
-		
 		first_position_change = false
 		
 	
