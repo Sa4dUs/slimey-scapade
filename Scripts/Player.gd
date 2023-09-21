@@ -92,8 +92,18 @@ func execute_move(dir):
 	if first_position_change:
 		var game = get_parent().get_parent().get_parent()
 		
+		
 		if game.name == "GameManager":
+			if self.name == "Player":		
+				game.update_last_moves(game.moves)
+			else:
+				await get_tree().create_timer(0.01).timeout
+			
 			game.moves[get_child_index()] += 1
+			
+			if self.name == "Player":
+				game.fix_moves()
+				
 		
 		first_position_change = false
 		

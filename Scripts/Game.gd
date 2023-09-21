@@ -13,9 +13,6 @@ func _ready():
 	$SceneManager.load_level_by_id(current_level)
 	
 func _process(_delta):
-	if sum(moves) != 0 and multiple_changes(moves, last_moves):
-		print("Have to fix!")
-	
 	$UIManager.set_moves(sum(moves))
 	
 	if !$"Level/Spots":
@@ -65,13 +62,18 @@ func sum(array):
 		
 	return sum_value
 	
-func update_last_moves():
-	last_moves = moves
+func update_last_moves(moves):
+	last_moves = moves.duplicate()
 	
 func multiple_changes(a, b):
 	for i in range(a.size()):
-		print(abs(a[i] - b[i]))
 		if abs(a[i] - b[i]) > 1:
 			return true
 	return false
+	
+func fix_moves():
+	print("last_moves ", last_moves)
+	print("moves ", moves)
+	if sum(moves) != 0 and abs(sum(moves) - sum(last_moves)) > 1:
+		print("Have to fix")
 
