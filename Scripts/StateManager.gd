@@ -35,7 +35,7 @@ class LevelState:
 			
 		return result
 	func build_tilemap_info(tilemap: TileMap):
-		var raw_data = tilemap.get_used_cells(0)
+		var raw_data = tilemap.get_used_cells(0).duplicate()
 		
 		for i in range(raw_data.size()):
 			var coords = raw_data[i]
@@ -103,13 +103,20 @@ func load_tilemap_state(tilemap_state: Array):
 	for i in range(tilemap_state.size()):
 		var coords = tilemap_state[i][0]
 		var tile = tilemap_state[i][1]
-		print("StateManager.gd/load_tilemap_state ", coords, ' ', tile)
 		
+		# Get old data
+		var old_tile = tilemap.get_cell_source_id(0, coords)
+		
+		if old_tile != tile:
+			print("StateManager.gd/load_tilemap_state ", coords, ' ', old_tile, ' -> ', tile)
 		
 		tilemap.set_cell(0, coords, tile, Vector2i(0, 0))
 	
 func load_player_state(player_state: Array):
-	pass
+	for i in range(player_state.size()):
+		var aux = players.get_child(i)
+		print(aux.position, ' ', player_state[i])
+		aux.position = player_state[i]
 	
 func load_coin_state(coin_state: Array):
 	pass
